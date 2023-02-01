@@ -1,0 +1,74 @@
+
+const AddContactModal = () => {
+  return (
+    <form className="bg-white w-[20rem] sm:w-[35rem] rounded-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div className="Modal-Top flex justify-between rounded-t-md bg-amber-500 p-5">
+        <h1 className="text-white sm:text-3xl text-2xl font-semibold self-center">Contact Details</h1>
+        <span className="material-symbols-outlined text-white sm:text-4xl text-3xl self-center cursor-pointer">cancel</span>
+      </div>
+
+      <div className="flex sm:justify-between sm:flex-row flex-col px-5 pt-5 pb-0">
+        <div className="firstName flex flex-col sm:w-[15rem] w-full">
+          <label htmlFor="firstName">First Name</label>
+          <input className="border-[1px] border-neutral-300 rounded p-1 h-11" type="text" id="firstName" />
+        </div>
+        <div className="lastName flex flex-col sm:w-[15rem] w-full mt-3">
+          <label htmlFor="lastName">Last Name</label>
+          <input className="border-[1px] border-neutral-300 rounded p-1 h-11" type="text" id="lastName" />
+        </div>
+      </div>
+
+      <div className="flex sm:justify-between sm:flex-row flex-col px-5 mt-3">
+        <div className="email flex flex-col sm:w-[15rem] w-full">
+          <label htmlFor="email">Email</label>
+          <input className="border-[1px] border-neutral-300 rounded p-1 h-11" type="email" id="email" />
+        </div>
+        <div className="phone flex flex-col sm:w-[15rem] w-full mt-3">
+          <label htmlFor="phone">Phone</label>
+          <input className="border-[1px] border-neutral-300 rounded p-1 h-11" type="text" id="phone" />
+        </div>
+      </div>
+
+      <div className="flex sm:justify-between sm:flex-row flex-col px-5 mt-3">
+        <div className="address flex flex-col sm:w-[15rem] w-full">
+          <label htmlFor="address">Address</label>
+          <input className="border-[1px] border-neutral-300 rounded p-1 h-11" type="text" id="address" />
+        </div>
+        <div className="postalCode flex flex-col sm:w-[15rem] w-full mt-3">
+          <label htmlFor="postalCode">Postal Code</label>
+          <input className="border-[1px] border-neutral-300 rounded p-1 h-11" type="text" id="postalCode" />
+        </div>
+      </div>
+
+      <div className="flex sm:justify-between sm:flex-row flex-col px-5 mt-3">
+        <div className="city flex flex-col sm:w-[15rem] w-full">
+          <label htmlFor="city">City</label>
+          <input className="border-[1px] border-neutral-300 rounded p-1 h-11" type="text" id="city" />
+        </div>
+        <div className="country flex flex-col sm:w-[15rem] w-full mt-3">
+          <label htmlFor="country">Country</label>
+          <input className="border-[1px] border-neutral-300 rounded p-1 h-11" type="text" id="country" />
+        </div>
+      </div>
+
+      <div className="px-5 sm:pt-5 mt-5">
+        <label htmlFor="labels">Labels</label>
+        <select className="Dropdown border-[1px] border-neutral-300 h-11 w-full" name="groups" id="labels">
+          <option value="All">All</option>
+          <option value="Friends">Friends</option>
+          <option value="Family">Family</option>
+          <option value="Work">Work</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div className="buttons px-5 pt-5 pb-7">
+        <button className="bg-amber-500 text-white rounded h-11 w-28" type="submit">Save</button>
+        <button className="bg-red-500 text-white rounded h-11 w-28 ml-2">Delete</button>
+      </div>
+
+    </form>
+  )
+}
+
+export default AddContactModal;

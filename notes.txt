@@ -1,0 +1,53 @@
+TODO
+*ContactList component
+*Contact component
+*Add Contact Modal
+*DeleteModal
+*Make everything responsive
+*Add Contact
+*Update Contact
+*Delete Contact
+*Menu Dropdown
+*Search
+*Sort
+*Add Dummy Data button
+*Sort
+*Add "new" property
+*Switch Postal Code and City on form
+*When clicking on existing contact, need to load the label
+*Hover States - buttons, contacts
+*Add black backdrop when Modal pops open
+*Issue with labels, switching from friends to family (or anything besides all)
+
+*Validation (for phone, for zip code)
+-Truncation?
+-Git
+-Firebase Google authentication
+-Firebase Firestore
+-Testing
+
+
+
+USING
+*Tailwind
+*Google Material 
+*react-uuid
+-localStorage
+-Firebase authentication
+-Firebase Firestore
+
+
+
+const contact = {
+  id: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  address: "",
+  postalCode: "",
+  city: "",
+  state: "",
+  label: "Friends",
+  new: true
+}
