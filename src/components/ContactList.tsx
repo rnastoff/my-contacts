@@ -5,11 +5,14 @@ import Contact from './Contact';
 import { ContactInterface } from '../interfaces/contactInterface';
 
 interface Props {
+  contacts: ContactInterface[];
   filteredContacts: ContactInterface[];
   displayContactModal: (id: string) => void;
 }
 
-const ContactList = ({ filteredContacts, displayContactModal }: Props) => {
+const ContactList = ({ contacts, filteredContacts, displayContactModal }: Props) => {
+
+  let noContactsHtml = (<p className="text-center mt-3 text-white sm:text-xl text-lg">You have no contacts.</p>)
 
   let contactHtml = (filteredContacts
     .sort((a, b) => (a.firstName > b.firstName) ? 1 : -1)
@@ -17,11 +20,9 @@ const ContactList = ({ filteredContacts, displayContactModal }: Props) => {
       return (<Contact contact={contact} displayContactModal={displayContactModal} key={index} />)
     }));
 
-  // useEffect(() => console.log(contactHtml))
-
   return (
     <section>
-      {contactHtml}
+      {contacts.length > 0 ? contactHtml : noContactsHtml}
     </section>
   )
 }

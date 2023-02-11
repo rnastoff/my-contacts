@@ -18,23 +18,28 @@ TODO
 *Hover States - buttons, contacts
 *Add black backdrop when Modal pops open
 *Issue with labels, switching from friends to family (or anything besides all)
-
 *Validation (for phone, for zip code)
--Truncation?
--Git
--Firebase Google authentication
--Firebase Firestore
--Testing
+*Git
+*Adjust "mock" button to include anything already in contacts
 
+
+*Firebase Google authentication
+*Firebase Firestore
+*Deal with responsive problems
+*Add "There are no contacts"
+*Deal with firebase permissions
+*Env file for api keys
+-Truncation?
+-Testing
+-Add some error handling
 
 
 USING
 *Tailwind
 *Google Material 
 *react-uuid
--localStorage
--Firebase authentication
--Firebase Firestore
+*localStorage
+*Firebase Auth & Firestore
 
 
 
@@ -51,3 +56,121 @@ const contact = {
   label: "Friends",
   new: true
 }
+
+
+AUTHENTICATION/DATABASE/LOCALSTORAGE NOTES
+
+-Login
+ -Set email in localStorage
+ -Set uid in localStorage
+ -setState(email)
+ -setState(uid)
+ -get contacts from database
+
+-Normally I'd tie the database calls to the change in useEffect
+
+
+-Logout
+ -email setState("")
+ -uid setState("")
+ -localStorage.clear();
+
+
+-Need to persist contacts in localStorage after database get.
+-On login, get database, setState, setLocalStorage
+
+-Need to promisify the database call?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------
+Add new Contact
+-UserId - contacts: array
+
+-If email is in local storage (logged in), send to db
+  -Gets added to contacts
+  -Add/update - .set() or .doc().set()
+
+-If no email, update localStorage
+
+
+
+*On page load
+  *If email in localStorage
+    *Get email from localStorage, setState
+    *Get uid from local storage , setState
+    *Get contacts from DB
+     (already logged in, this is for page reloads)
+  *Else On page load, get contacts from localStorage
+
+
+-Login
+ *set email in localStorage, set email in state
+ *set user ID in localStorage, set user ID in state
+ *useEffect - Get contacts from DB
+
+*On logout
+ *Clear localStorage
+ *Clear email state
+ *Clear uid state
+
+
+Update Contact
+-If email, get ID, send to db
+-If no email, update localStorage
+
+Delete Contact
+-If email, get ID, remove from db
+-If no email, update localStorage
+
+-Be sure to add conditional for <p>You have no contacts</p>
+
+
+
+
+
+
+
+
+
+ const login = () => {
+    const signIn = async () => {
+      const result = await signInWithPopup(auth, provider)
+        .then((data) => {
+          localStorage.setItem("email", JSON.stringify(data.user.email));
+          localStorage.setItem("uid", JSON.stringify(data.user.uid));
+          setLoginValue(JSON.stringify(data.user.email));
+          setUid(data.user.uid);
+
+          //here
+          setDoc(doc(db, 'users', uid), { contacts: "" })
+
+        }).catch((error) => {
+          console.log(error)
+        });
+    }
+    signIn();
+  }

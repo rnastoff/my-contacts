@@ -47,7 +47,7 @@ const ContactModal = ({ contacts, setContacts, activeContact, setActiveContact, 
   }
 
   const addDummyData = () => {
-    setContacts(dummyData);
+    setContacts([...contacts, ...dummyData]);
     setContactModalVisible(false);
   }
 
@@ -99,9 +99,9 @@ const ContactModal = ({ contacts, setContacts, activeContact, setActiveContact, 
       </div>
 
       <div className="buttons px-5 pt-5 pb-7">
-        <button className="bg-amber-500 text-white rounded h-11 w-28 active:scale-95" type="submit">Save</button>
-        <button className="bg-red-500 text-white rounded h-11 w-28 ml-2 active:scale-95" type="button" onClick={deleteContact}>Delete</button>
-        <button className="bg-blue-500 text-white rounded h-11 w-28 ml-2 active:scale-95" type="button" onClick={addDummyData}>Mock</button>
+        <button className="bg-amber-500 text-white rounded h-11 w-24 active:scale-95" type="submit">Save</button>
+        <button className="bg-red-500 text-white rounded h-11 w-24 ml-2 active:scale-95" type="button" onClick={deleteContact}>Delete</button>
+        <button className="bg-blue-500 text-white rounded h-11 w-24 ml-2 active:scale-95" type="button" onClick={addDummyData}>Mock</button>
       </div>
     </form>
   )
