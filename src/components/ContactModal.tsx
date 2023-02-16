@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 import TextInput from './TextInput';
 import useForm from '../hooks/useForm';
 
@@ -53,7 +51,7 @@ const ContactModal = ({ contacts, setContacts, activeContact, setActiveContact, 
 
   return (
     <form onSubmit={handleSave} className="bg-white w-[20rem] sm:w-[35rem] rounded-md absolute sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 
-                     w-full top-0 left-0 translate-x-0 translate-y-0">
+                     w-full top-0 left-0 translate-x-0 translate-y-0" data-testid="contactModal">
       <div className="Modal-Top flex justify-between rounded-t-md bg-amber-500 p-5">
         <h1 className="text-white sm:text-3xl text-2xl font-semibold self-center">Contact Details</h1>
         <span
@@ -63,23 +61,23 @@ const ContactModal = ({ contacts, setContacts, activeContact, setActiveContact, 
       </div>
 
       <div className="flex sm:justify-between sm:flex-row flex-col px-5 sm:pt-5 pt-2 pb-0">
-        <TextInput labelText="First Name" name="firstName" handleChange={handleInputChange} value={values.firstName} />
-        <TextInput labelText="Last Name" name="lastName" handleChange={handleInputChange} value={values.lastName} />
+        <TextInput labelText="First Name" name="firstName" handleChange={handleInputChange} value={values.firstName} role="firstName" />
+        <TextInput labelText="Last Name" name="lastName" handleChange={handleInputChange} value={values.lastName} role="lastName" />
       </div>
 
       <div className="flex sm:justify-between sm:flex-row flex-col px-5 sm:pt-5 pb-0">
-        <TextInput labelText="Email" name="email" handleChange={handleInputChange} value={values.email} />
-        <TextInput labelText="Phone" name="phone" handleChange={handleInputChange} value={values.phone} />
+        <TextInput labelText="Email" name="email" handleChange={handleInputChange} value={values.email} role="email" />
+        <TextInput labelText="Phone" name="phone" handleChange={handleInputChange} value={values.phone} role="phone" />
       </div>
 
       <div className="flex sm:justify-between sm:flex-row flex-col px-5 sm:pt-5 pb-0">
-        <TextInput labelText="Address" name="address" handleChange={handleInputChange} value={values.address} />
-        <TextInput labelText="City" name="city" handleChange={handleInputChange} value={values.city} />
+        <TextInput labelText="Address" name="address" handleChange={handleInputChange} value={values.address} role="address" />
+        <TextInput labelText="City" name="city" handleChange={handleInputChange} value={values.city} role="city " />
       </div>
 
       <div className="flex sm:justify-between sm:flex-row flex-col px-5 sm:pt-5 pb-0">
-        <TextInput labelText="State" name="state" handleChange={handleInputChange} value={values.state} />
-        <TextInput labelText="Postal Code" name="postalCode" handleChange={handleInputChange} value={values.postalCode} />
+        <TextInput labelText="State" name="state" handleChange={handleInputChange} value={values.state} role="state" />
+        <TextInput labelText="Postal Code" name="postalCode" handleChange={handleInputChange} value={values.postalCode} role="postalCode" />
       </div>
 
       <div className="px-5 sm:pt-5 sm:mt-0 mt-2">
@@ -88,6 +86,7 @@ const ContactModal = ({ contacts, setContacts, activeContact, setActiveContact, 
           className="Dropdown border-[1px] border-neutral-300 outline-0 h-11 w-full"
           name="label"
           id="labels"
+          role="select"
           onChange={handleDropdownChange}
           value={values.label}
         >
@@ -99,9 +98,9 @@ const ContactModal = ({ contacts, setContacts, activeContact, setActiveContact, 
       </div>
 
       <div className="buttons px-5 pt-5 pb-7">
-        <button className="bg-amber-500 text-white rounded h-11 w-24 active:scale-95" type="submit">Save</button>
-        <button className="bg-red-500 text-white rounded h-11 w-24 ml-2 active:scale-95" type="button" onClick={deleteContact}>Delete</button>
-        <button className="bg-blue-500 text-white rounded h-11 w-24 ml-2 active:scale-95" type="button" onClick={addDummyData}>Mock</button>
+        <button className="bg-amber-500 text-white rounded h-11 w-24 active:scale-95" type="submit" role="button">Save</button>
+        <button className="bg-red-500 text-white rounded h-11 w-24 ml-2 active:scale-95" type="button" onClick={deleteContact} role="button">Delete</button>
+        <button className="bg-blue-500 text-white rounded h-11 w-24 ml-2 active:scale-95" type="button" onClick={addDummyData} role="button">Mock</button>
       </div>
     </form>
   )

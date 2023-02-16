@@ -58,29 +58,6 @@ const contact = {
 }
 
 
-AUTHENTICATION/DATABASE/LOCALSTORAGE NOTES
-
--Login
- -Set email in localStorage
- -Set uid in localStorage
- -setState(email)
- -setState(uid)
- -get contacts from database
-
--Normally I'd tie the database calls to the change in useEffect
-
-
--Logout
- -email setState("")
- -uid setState("")
- -localStorage.clear();
-
-
--Need to persist contacts in localStorage after database get.
--On login, get database, setState, setLocalStorage
-
--Need to promisify the database call?
-
 
 
 

@@ -12,8 +12,8 @@ import { emptyContact } from './variables/emptyContact';
 import { ContactInterface } from './interfaces/contactInterface';
 
 import { auth, provider, db } from './firebase/firebase';
-import { signInWithPopup } from 'firebase/auth';
-import { collection, doc, getDoc, setDoc, addDoc, updateDoc } from 'firebase/firestore';
+import { signInWithPopup, signOut } from 'firebase/auth';
+import { collection, doc, getDoc, setDoc } from 'firebase/firestore';
 
 
 function App() {
@@ -37,9 +37,9 @@ function App() {
       handleLoginData(localStorage.getItem("email") || '{}', localStorage.getItem("uid") || '{}');
     }
     else if (localStorage.getItem("contacts")) {
-      //Load contacts from localStorage
       setContacts(JSON.parse(localStorage.getItem("contacts") || '{}'));
     }
+    if (contacts.length === 0) localStorage.setItem("contacts", "[]");
   }, []);
 
 
@@ -94,6 +94,7 @@ function App() {
 
   //Logout
   const logout = () => {
+    signOut(auth);
     localStorage.clear();
     setLoginValue("");
     setUid("");

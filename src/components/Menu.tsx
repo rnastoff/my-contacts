@@ -27,12 +27,15 @@ const Menu = ({ displayContactModal, setSearchValue, setDropdownValue, login, lo
     <section className="flex justify-center sm:justify-between mt-6">
       <button
         className="bg-amber-500 text-base text-white rounded h-11 hidden sm:w-36 sm:block active:scale-95"
+        data-testid="addContactButton"
+        role="button"
         onClick={() => displayContactModal()}
       >Add Contact
       </button>
       {/* Reponsive */}
       <button
         className="bg-amber-500 text-3xl text-white rounded h-11 w-12 sm:w-12 block sm:hidden active:scale-95"
+        role="button"
         onClick={() => displayContactModal()}
       >+
       </button>
@@ -42,12 +45,14 @@ const Menu = ({ displayContactModal, setSearchValue, setDropdownValue, login, lo
           className="mr-2 h-11 px-1 box-border outline-0 rounded ml-2 sm:w-60 w-28 self-center"
           type="text"
           placeholder="Search"
+          role="filterInput"
           onChange={(e) => setSearchValue(e.target.value)}
         />
         <select
           className="Dropdown h-11 rounded outline-0 sm:w-24 w-20 mr-2 self-center"
           name="labels"
           id="labels"
+          role="labels"
           onChange={(e) => setDropdownValue(e.target.value)}
         >
           <option value="All">All</option>
